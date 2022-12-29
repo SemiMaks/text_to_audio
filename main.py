@@ -10,12 +10,12 @@ text_val = 'Welcom to python'
 text_rus = 'Я говорю на русском'
 
 
-def internet_status(dir_path):
+def internet_status(file):
     try:
         urlopen("http://google.com")
         print("INFO: Internet OK")
         file_text = []
-        with open(dir_path, 'r', encoding='utf8') as fin:
+        with open(file, 'r', encoding='utf8') as fin:
             for line in fin:
                 file_text.append(line)
                 file_text = ''.join(file_text)
@@ -42,7 +42,9 @@ def internet_off(text_val):
 
 
 def main(dir_path):
-    internet_status(dir_path)
+    print('Укажите файл:')
+    file = input()
+    internet_status(file)
 
 
 main('text.txt')
