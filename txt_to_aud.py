@@ -18,7 +18,7 @@ text_val = 'Интернет отсутствует'
 def internet_status(file):
     try:
         urlopen("http://google.com")
-        print("INFO: Internet OK")
+        print("INFO: С интернетом всё ОК")
 
         with open(file, 'r', encoding='utf8') as fin:
             files = fin.read().splitlines()
@@ -37,6 +37,7 @@ def internet_on(file_text):
     language = 'ru'
     obj = gTTS(text=file_text, lang=language, slow=False)
     obj.save("txt_to_audio.mp3")
+    print('INFO: Текст в голос преобразован.\n\nПриятного прослушивания!')
     playsound("txt_to_audio.mp3")
 
 
@@ -49,14 +50,15 @@ def internet_off(text_val):
 
 
 def main():
+    print('\n"КОНВЕРТЕР ТЕКСТА В ГОЛОС"\n')
     print('Укажите файл:')
     file = input()
-    print(file)
+    print(f'Вы указали файл: {file}')
     if file.endswith('.txt'):
-        print('Обработка txt файла...')
+        # print('Обработка txt файла...')
         internet_status(file)
     elif file.endswith('.pdf'):
-        print('Конвертирование pdf файла...')
+        # print('Конвертирование pdf файла...')
         convert(file)
         internet_status('pdf_out_file.txt')
     else:
